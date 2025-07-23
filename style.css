@@ -1,0 +1,139 @@
+@import url("https://fonts.cdnfonts.com/css/samsung-sharp-sans-regular");
+*,
+*::before,
+*::after {
+  /* so it will apply what we should apply that only it will apply */
+  box-sizing: border-box;
+}
+
+* {
+  font-family: "Samsung Sharp Sans Bold, sans-serif";
+  line-height: 1.4;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: black;
+}
+
+.card_container {
+  /* flipping of the card and 3d effect */
+  perspective: 1000px;
+  width: 350px;
+  height: 250px;
+  margin: 100px auto;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+}
+
+.card_container:hover .card {
+  transform: rotateY(180deg);
+}
+
+.frontcard,
+.backcard {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* when it hovered that time only the back face should be showed */
+  backface-visibility: hidden;
+  border-radius: 15px;
+  /* overflow means the content shoukd only be inside */
+  overflow: hidden;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.frontcard {
+  background-color: white;
+  padding: 20px;
+}
+
+.frontcard img {
+  height: 75px;
+  width: 200px;
+  margin: 65px auto;
+  display: block;
+  max-width: 80%;
+}
+
+.backcard {
+  position: relative;
+  padding: 2px;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #833ab4, #fd1d1d, #fcb045, #833ab4);
+  /* it will flip the card in 180 direction */
+  transform: rotateY(180deg);
+  /* animation will applied of border */
+  animation: flow-border 3s linear infinite;
+  /* it will give the mirror  effect  it is will be for the border*/
+  background-size: 300% 300%;
+}
+
+.backcard_content {
+  background-color: #000000;
+  color: #ffffff;
+  /* slightly smaller than parent for border effect */
+  border-radius: 13px;
+  padding: 16px 20px 12px 20px;
+  height: 100%;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.name {
+  font-size: 10px;
+  letter-spacing: 2px;
+  color: #0047d4;
+  text-transform: uppercase;
+  font-weight: 300;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.description {
+  color: #d8cccc;
+  margin-bottom: 10px;
+  font-size: 15px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border: 1px solid #4cad50;
+  background-color: #00ffff;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 10px;
+  /* has an ancker tag it will show an underline but we don't want to show underline mean we will use an ancker tag none*/
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 5px;
+}
+.btn:hover {
+  background-color: #004382;
+  color: white;
+  border-color: #43a047;
+}
+.frontcard:hover {
+  transform: rotateY(180deg);
+}
+
+@keyframes flow-border {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
